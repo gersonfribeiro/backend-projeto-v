@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: backend
+  main:
+    web-application-type: servlet
+  web:
+    resources:
+      add-mappings: false
+  # propriedades do spring security (temporarias)
+  security:
+    user:
+      name: admin
+      password: admin123
+  # conexao com o banco de dados
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    name: ${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  # definicao da capacidade maxima de envio de arquivos
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: America/Sao_Paulo
+
+# Aplicacao executando na porta 8084
+server:
+  port: 8084
+
+# Token secreto para codificacaoo hash
+token:
+  secret-key:
+
+# Configura��es para conexao com o bucket
+#aws:
+#  access-key: ${DOTENV_AWS_ACCESS_KEY:default_access_key}
+#  secret-key: ${DOTENV_AWS_SECRET_KEY:default_secret_key}
+#  bucket-name: ${DOTENV_AWS_BUCKET_NAME:default_bucket}
+#  region: ${DOTENV_AWS_REGION:us-east-2}
+
+# Exibicao das querys no terminal
+logging:
+  level:
+    root: INFO
+    org.springframework.jdbc.core: DEBUG  # Loga as queries SQL feitas pelo JdbcTemplate
+    org.springframework.jdbc.datasource: DEBUG  # Loga operacoes com o DataSource
+    org.postgres.jdbc: DEBUG  # Loga as queries executadas no Postgres

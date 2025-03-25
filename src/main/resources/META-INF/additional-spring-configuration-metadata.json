@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "token.secret-key",
+      "type": "java.lang.String",
+      "description": "armazenamento do token de codificação."
+    },
+    {
+      "name": "aws.access-key",
+      "type": "java.lang.String",
+      "description": "armazenamento do acesso ao bucket aws."
+    },
+    {
+      "name": "aws.secret-key",
+      "type": "java.lang.String",
+      "description": "armazenamento do acesso ao bucket aws."
+    },
+    {
+      "name": "aws.bucket-name",
+      "type": "java.lang.String",
+      "description": "armazenamento do acesso ao bucket aws."
+    },
+    {
+      "name": "aws.region",
+      "type": "java.lang.String",
+      "description": "armazenamento do acesso ao bucket aws."
+    }
+  ]
+}
