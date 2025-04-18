@@ -33,7 +33,8 @@ server:
 
 # Token secreto para codificacaoo hash
 token:
-  secret-key:
+  secret-key: ${JWT_SECRET}
+  x-api-key: ${X-API-KEY}
 
 # Configura��es para conexao com o bucket
 #aws:
