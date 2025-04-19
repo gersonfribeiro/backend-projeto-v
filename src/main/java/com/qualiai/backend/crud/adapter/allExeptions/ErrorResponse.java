@@ -15,7 +15,6 @@ import java.util.Map;
 public class ErrorResponse {
     private String erro;
     private UsuarioTokenDTO usuario;
-    private int saida;
     private Map<String, Object> trace;
     private String horaErro;
     private int statusCode;

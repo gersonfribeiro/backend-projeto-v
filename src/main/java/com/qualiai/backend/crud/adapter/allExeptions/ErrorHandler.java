@@ -31,6 +31,8 @@ public class ErrorHandler {
             errorResponse.setHoraErro(usuarioErrorInterface.getHoraErro());
             errorResponse.setStatusCode(usuarioErrorInterface.getStatusCode());
 
+            // Código para persistir o erro no banco de dados:
+
             return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(usuarioErrorInterface.getStatusCode()));
         }
 
@@ -38,7 +40,6 @@ public class ErrorHandler {
         ErrorResponse defaultError = new ErrorResponse(
                 "Erro interno não tratado",
                 null,
-                0,
                 traceInfo,
                 dataAtual(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value()

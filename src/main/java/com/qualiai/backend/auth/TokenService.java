@@ -1,16 +1,14 @@
 package com.qualiai.backend.auth;
 
-import com.qualiai.backend.crud.domain.usuarios.UsuarioDetails;
-import com.qualiai.backend.crud.domain.usuarios.Usuarios;
-import com.qualiai.backend.dtos.auth.LoginResponse;
-import com.qualiai.backend.dtos.auth.UsuarioTokenDTO;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Value;
+import com.qualiai.backend.crud.domain.usuarios.UsuarioDetails;
+import com.qualiai.backend.crud.domain.usuarios.Usuarios;
+import com.qualiai.backend.dtos.auth.LoginResponse;
+import com.qualiai.backend.dtos.auth.UsuarioTokenDTO;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -20,16 +18,7 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    @Value("${JWT_SECRET}")
-    private String secret;
-
-    @PostConstruct
-    public void init() {
-        if (secret == null || secret.isEmpty()) {
-            throw new IllegalStateException("JWT secret key is not defined!");
-        }
-//        System.out.println("JWT Secret: " + secret);
-    }
+    private final String secret = "655ed07d-e6d7-4fad-b0e5-baf97df840f6-777fb814-d6ca-4056-9c09-f1cc4e8b967a";
 
     public LoginResponse generateToken(UsuarioDetails usuarioDetails) {
         try {
@@ -103,5 +92,4 @@ public class TokenService {
 //            throw new TokenInvalido("Token inválido ou expirado");
 //        }
     }
-
 }

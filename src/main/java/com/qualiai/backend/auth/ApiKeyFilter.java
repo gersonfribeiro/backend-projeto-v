@@ -22,8 +22,8 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 
     private static final String API_KEY_HEADER = "X-API-KEY";
 
-    @Value("${token.x-api-key}")
-    private String VALID_API_KEY;
+//    @Value("${X-API-KEY}")
+    private final String VALID_API_KEY = "777fb814655ed07d-e6d7d6ca-40564fad-b0e59c09-baf97df840f6-----f1cc4e8b967a";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -41,4 +41,5 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 }

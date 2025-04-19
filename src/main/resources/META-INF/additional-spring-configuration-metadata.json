@@ -6,6 +6,11 @@
       "description": "armazenamento do token de codificação."
     },
     {
+      "name": "token.x-api-key",
+      "type": "java.lang.String",
+      "description": "Description for token.x-api-key."
+    },
+    {
       "name": "aws.access-key",
       "type": "java.lang.String",
       "description": "armazenamento do acesso ao bucket aws."
@@ -14,11 +19,6 @@
       "name": "aws.secret-key",
       "type": "java.lang.String",
       "description": "armazenamento do acesso ao bucket aws."
-    },
-    {
-      "name": "token.x-api-key",
-      "type": "java.lang.String",
-      "description": "Description for token.x-api-key."
     },
     {
       "name": "aws.bucket-name",
