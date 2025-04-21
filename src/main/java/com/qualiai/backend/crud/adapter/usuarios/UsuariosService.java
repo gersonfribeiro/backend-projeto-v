@@ -1,5 +1,6 @@
 package com.qualiai.backend.crud.adapter.usuarios;
 
+import com.qualiai.backend.crud.adapter.auth.exceptions.PermissaoNegada;
 import com.qualiai.backend.crud.adapter.usuarios.exceptions.EmailDuplicado;
 import com.qualiai.backend.crud.adapter.usuarios.exceptions.UsuarioNaoEncontrado;
 import com.qualiai.backend.crud.domain.usuarios.UsuarioDetails;
@@ -97,7 +98,11 @@ public class UsuariosService {
     }
 
     public Usuarios updateUsuario(UpdateUsuariosDTO usuario, int idUsuario, String authorization) {
-        autorizacaoUsuarios(authorization, "PUT");
+        UsuarioTokenDTO usuarioToken = autorizacaoUsuarios(authorization, "PUT");
+
+        if (!usuarioToken.permissao().equals("ADMINISTRADOR") && !usuarioToken.idUsuario().equals(idUsuario))
+            throw new PermissaoNegada("Você não tem permissão para modificar essa conta", usuarioToken);
+
         Optional<UsuarioDetails> usuarioDomain = selectUsuarioById(idUsuario, authorization);
 
         Usuarios usuarioAtualizado = usuario.UpdateUsuario(idUsuario);
@@ -113,5 +118,4 @@ public class UsuariosService {
         selectUsuarioById(idUsuario, authorization);
         usuariosRepository.deleteUsuario(idUsuario);
     }
-
 }

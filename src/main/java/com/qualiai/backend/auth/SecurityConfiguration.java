@@ -41,8 +41,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/usuarios/**").hasRole("ADMINISTRADOR")
-//                        .requestMatchers(HttpMethod.PUT, "/auth/controle").hasRole("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("USUARIO")
+                        .requestMatchers(HttpMethod.PUT, "/auth/controle").hasAnyRole("ADMINISTRADOR", "API_KEY")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class)
