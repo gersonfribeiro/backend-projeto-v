@@ -5,9 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.validation.Errors;
 
-import static com.qualiai.backend.crud.adapter.allExeptions.crud.ErrorsSQL.*;
+import static com.qualiai.backend.crud.adapter.allExeptions.crud.ErrorsSQL.sqlInsertError;
 
 @Repository
 public class ErrorsJDBC extends ErrorResponse implements ErrorsRepository {
@@ -20,7 +19,7 @@ public class ErrorsJDBC extends ErrorResponse implements ErrorsRepository {
     }
 
     @Override
-    public void inserir(Errors errors) {
+    public void inserir(ErrorResponse errors) {
         try {
             jdbcTemplate.update(sqlInsertError(), paramsException());
         } catch (Exception e) {
