@@ -20,4 +20,18 @@ public class CreateUsuariosDTO extends UsuariosBaseDTO{
 
         return novoUsuario;
     }
+
+    public Usuarios CreateUsuarioDefault() {
+        Usuarios novoUsuario = new Usuarios();
+        novoUsuario.setNome("ADMIN");
+        novoUsuario.setEmail("admin@gmail.com");
+        novoUsuario.setSenha("AdminQualiAI");
+        novoUsuario.setPermissao("ADMINISTRADOR");
+        novoUsuario.setAtivo(true);
+        novoUsuario.setContaBloqueada(false);
+        novoUsuario.setContaExpiraEm(null);
+        novoUsuario.setSenhaExpirada(false);
+        novoUsuario.setTentativasFalhas(0);
+        return novoUsuario;
+    }
 }

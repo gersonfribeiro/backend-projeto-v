@@ -1,10 +1,7 @@
 package com.qualiai.backend.crud.adapter.auth;
 
 import com.qualiai.backend.auth.TokenService;
-import com.qualiai.backend.crud.adapter.auth.exceptions.AlteracaoDeSenhaInvalida;
-import com.qualiai.backend.crud.adapter.auth.exceptions.ContaBloqueada;
-import com.qualiai.backend.crud.adapter.auth.exceptions.LoginIncorreto;
-import com.qualiai.backend.crud.adapter.auth.exceptions.MaximoTentativasIncorretas;
+import com.qualiai.backend.crud.adapter.auth.exceptions.*;
 import com.qualiai.backend.crud.adapter.usuarios.UsuariosService;
 import com.qualiai.backend.crud.adapter.usuarios.exceptions.UsuarioNaoEncontrado;
 import com.qualiai.backend.crud.domain.auth.AuthRepository;
@@ -112,6 +109,9 @@ public class AuthService {
         Optional<UsuarioDetails> usuarioOpt = usuariosService.selectUsuarioByEmail(data.getEmailUsuario(), authorization);
         UsuarioDetails usuario = usuarioOpt.get();
         UsuarioTokenDTO usuarioToken = getUsuarioByToken(authorization);
+
+        if (!usuarioToken.email().equals(data.getEmailUsuario()))
+            throw new PermissaoNegada("Você não tem permissão para modificar essa conta", usuarioToken);
 
         if (!passwordEncoder.matches(data.getSenhaUsuario(), usuario.getPassword())) {
             throw new AlteracaoDeSenhaInvalida(

@@ -6,11 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.List;
 
 public enum Permissao {
-    ADMINISTRADOR_AUTORIZADO(List.of("ROLE_ADMINISTRADOR", "ROLE_AUTORIZA_SAIDAS", "ROLE_GERENCIA", "ROLE_RELATORIO")),
-    ADMINISTRADOR(List.of("ROLE_ADMINISTRADOR", "ROLE_GERENCIA", "ROLE_RELATORIO")),
-    EMITE_AUTORIZACAO(List.of("ROLE_AUTORIZA_SAIDAS", "ROLE_GERENCIA", "ROLE_RELATORIO")),
-    EMITE_SAIDA(List.of("ROLE_EMITE_SAIDA")),
-    PORTARIA(List.of("ROLE_PORTARIA"));
+    ADMINISTRADOR(List.of("ROLE_ADMINISTRADOR", "ROLE_GERENCIA", "ROLE_RELATORIO", "ROLE_USUARIO")),
+    USUARIOS(List.of("ROLE_USUARIO"));
 
     private final List<String> roles;
 
@@ -21,5 +18,4 @@ public enum Permissao {
     public List<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(SimpleGrantedAuthority::new).toList();
     }
-
 }
