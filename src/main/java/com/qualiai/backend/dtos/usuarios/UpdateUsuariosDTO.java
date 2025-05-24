@@ -11,7 +11,6 @@ public class UpdateUsuariosDTO extends UsuariosBaseDTO {
         usuarioAtualizado.setIdUsuario(idUsuario);
         usuarioAtualizado.setNome(this.nome);
         usuarioAtualizado.setEmail(this.email);
-        usuarioAtualizado.setSenha(this.senha);
         usuarioAtualizado.setPermissao(this.permissao);
         usuarioAtualizado.setAtivo(this.ativo);
         usuarioAtualizado.setContaBloqueada(this.contaBloqueada);

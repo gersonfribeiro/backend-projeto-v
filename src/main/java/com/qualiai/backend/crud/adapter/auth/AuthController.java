@@ -39,7 +39,7 @@ public class AuthController {
             @RequestParam String emailUsuario,
             @RequestParam boolean operacao,
             @RequestParam boolean ativo,
-            @RequestHeader("Authorization") String authorization
+            @RequestHeader(value = "Authorization", required = false) String authorization
     ) {
         return authHandler.controlarBloqueioContaUsuario(emailUsuario, operacao, ativo, authorization);
     }
