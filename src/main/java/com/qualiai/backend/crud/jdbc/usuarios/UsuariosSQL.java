@@ -50,7 +50,6 @@ public class UsuariosSQL {
         return """
                 \s
                 SELECT COUNT(*) as total_usuarios FROM usuarios;
-                \s
                 """;
     }
 
@@ -79,7 +78,6 @@ public class UsuariosSQL {
                     :senha_expirada,
                     :tentativas_falhas
                 );
-                \s
                 """;
     }
 
@@ -87,7 +85,6 @@ public class UsuariosSQL {
         return """
                 \s
                 SELECT COUNT(*) AS email_encontrado FROM usuarios WHERE email_usuario = :email_usuario;
-                \s
                 """;
     }
 
@@ -98,7 +95,6 @@ public class UsuariosSQL {
                 SET
                     nome_usuario = :nome_usuario,
                     email_usuario = :email_usuario,
-                    senha_usuario = :senha_usuario,
                     permissao_usuario = :permissao_usuario,
                     ativo = :ativo,
                     conta_bloqueada = :conta_bloqueada,
@@ -106,7 +102,6 @@ public class UsuariosSQL {
                     senha_expirada = :senha_expirada,
                     tentativas_falhas = :tentativas_falhas
                 WHERE usuarios.id_usuario = :id_usuario;
-                \s
                 """;
     }
 
@@ -114,8 +109,7 @@ public class UsuariosSQL {
         return """
                 \s
                 DELETE FROM usuarios
-                WHERE usuarios.id_usuario = :id_usuario;
-                \s
+                WHERE usuarios.id_usuario = :id_usuario
                 """;
     }
 }

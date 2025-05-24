@@ -108,7 +108,7 @@ public class UsuariosService {
         Usuarios usuarioAtualizado = usuario.UpdateUsuario(idUsuario);
         if (!Objects.equals(usuarioAtualizado.getEmail(), usuarioDomain.get().getUsername()))
             validarEmail(usuarioAtualizado.getEmail(), authorization);
-        usuarioAtualizado.setSenha(this.passwordEncoder.encode((usuarioAtualizado.getSenha())));
+//        usuarioAtualizado.setSenha(this.passwordEncoder.encode((usuarioAtualizado.getSenha())));
         usuariosRepository.updateUsuario(usuarioAtualizado);
         return usuarioAtualizado;
     }
